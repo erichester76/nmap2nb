@@ -1,0 +1,112 @@
+# mappings.yaml
+# 
+# This file contains two major sections:
+#   1) port_roles: A mapping from well-known TCP ports to a guessed device role and device_type.
+#   2) fingerprint_patterns: Regex-based vendor/type detection from TLS certs or page content.
+#
+# Adjust these as needed for your environment. They are not exhaustive but cover many common cases.
+
+port_roles:
+  "445":
+    role: "workstation"
+    device_type: "Workstation"
+  "139":
+    role: "workstation"
+    device_type: "Workstation"
+  "515":
+    role: "printer"
+    device_type: "Printer"
+  "631":
+    role: "printer"
+    device_type: "Printer"
+  "3389":
+    role: "Server"
+    device_type: "Server"
+
+
+fingerprint_patterns:
+  # -------------------------------
+  # IP Phones
+  # -------------------------------
+  - regex: "(?i)yealink"
+    vendor: "Yealink"
+    device_type: "Phone"
+
+  - regex: "(?i)polycom|\\bpoly\\b"
+    vendor: "Poly"
+    device_type: "Phone"
+
+  - regex: "(?i)grandstream"
+    vendor: "Grandstream"
+    device_type: "Phone"
+
+  - regex: "(?i)avaya"
+    vendor: "Avaya"
+    device_type: "Phone"
+
+  - regex: "(?i)mitel"
+    vendor: "Mitel"
+    device_type: "Phone"
+
+  # -------------------------------
+  # Firewalls / Network gear
+  # -------------------------------
+  - regex: "(?i)watchguard"
+    vendor: "WatchGuard"
+    device_type: "Firewall"
+
+  - regex: "(?i)fortigate|fortinet"
+    vendor: "Fortinet"
+    device_type: "FortiGate"
+
+  - regex: "(?i)\\bpalo\\s?alto\\b|\\bpan-os\\b"
+    vendor: "PaloAlto"
+    device_type: "Firewall"
+
+  - regex: "(?i)checkpoint|\\bcp[\\s_-]?fw\\b"
+    vendor: "CheckPoint"
+    device_type: "Firewall"
+
+  - regex: "(?i)sonicwall"
+    vendor: "SonicWall"
+    device_type: "Firewall"
+
+  - regex: "(?i)juniper|\\bjunos\\b|\\bscreenos\\b"
+    vendor: "Juniper"
+    device_type: "SRX"
+
+  - regex: "(?i)cisco"
+    vendor: "Cisco"
+    device_type: "Router"
+
+  - regex: "(?i)aruba"
+    vendor: "Aruba"
+    device_type: "Access Point"
+
+  - regex: "(?i)hp\\s?procurve"
+    vendor: "HP"
+    device_type: "Switch"
+
+  - regex: "(?i)dell networking|dell\\s?switch"
+    vendor: "Dell"
+    device_type: "Switch"
+
+  - regex: "(?i)unifi(?!ed)"
+    vendor: "Ubiquiti"
+    device_type: "Access Point"
+
+  - regex: "(?i)ubnt|ui\\.com"
+    vendor: "Ubiquiti"
+    device_type: "Access Point"
+
+  # -------------------------------
+  # NAS devices
+  # -------------------------------
+  - regex: "(?i)synology"
+    vendor: "Synology"
+    device_type: "NAS"
+
+  - regex: "(?i)qnap"
+    vendor: "QNAP"
+    device_type: "NAS"
+
